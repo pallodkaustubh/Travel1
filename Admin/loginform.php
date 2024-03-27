@@ -21,28 +21,24 @@
 <!--sticky-->
 <?php include('function.php'); ?>
 <?php
-$_SESSION['loginstatus']="";
-if(isset($_POST["sbmt"]))
-{
-    $cn=makeconnection();
+$_SESSION['loginstatus'] = "";
+if(isset($_POST["sbmt"])) {
+    $cn = makeconnection();
     $username = mysqli_real_escape_string($cn, $_POST["t1"]); // Sanitize user input
     $password = mysqli_real_escape_string($cn, $_POST["t2"]); // Sanitize user input
-    $s="SELECT * FROM users WHERE Username='$username' AND Pwd='$password'";
+    $s = "SELECT * FROM users WHERE Username='$username' AND Pwd='$password'";
     
-    $q=mysqli_query($cn,$s);
-    $r=mysqli_num_rows($q);
-    $data=mysqli_fetch_array($q);
+    $q = mysqli_query($cn, $s);
+    $r = mysqli_num_rows($q);
+    $data = mysqli_fetch_array($q);
     mysqli_close($cn);
-    if($r>0)
-    {
-        $_SESSION["Username"]= $username;
-        $_SESSION["usertype"]=$data[2];
-        $_SESSION['loginstatus']="yes";
-        header("location:admin/index.php");
+    if($r > 0) {
+        $_SESSION["Username"] = $username;
+        $_SESSION["usertype"] = $data[2];
+        $_SESSION['loginstatus'] = "yes";
+        header("location:index.php");
         exit; // Add exit to stop script execution after redirection
-    }
-    else
-    {
+    } else {
         echo "<script>alert('Invalid User Name or Password');</script>";
     }
 }
