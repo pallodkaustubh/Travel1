@@ -38,7 +38,7 @@ if(isset($_POST["sbmt"]))
         $_SESSION["Username"]= $username;
         $_SESSION["usertype"]=$data[2];
         $_SESSION['loginstatus']="yes";
-        header("location:index.php");
+        header("location:admin/index.php");
         exit; // Add exit to stop script execution after redirection
     }
     else
