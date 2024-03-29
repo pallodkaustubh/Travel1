@@ -36,7 +36,7 @@ if(isset($_POST["sbmt"])) {
         $_SESSION["Username"] = $username;
         $_SESSION["usertype"] = $data[2];
         $_SESSION['loginstatus'] = "yes";
-        header("location:Travel1/Admin/index.php"); // Adjusted redirection to admin/index.php
+        header("location:index.php"); // Adjusted redirection to admin/index.php
         exit; // Add exit to stop script execution after redirection
     } else {
         echo "<script>alert('Invalid User Name or Password');</script>";
